@@ -5,16 +5,16 @@ Validates and deletes if input character value is a special char, digit or alpha
 It is designed to be worked with Bootstrap. Its equal plugin is interchange plugin for Foundation.
 
 ### usage (HTML)
-<pre lang="html">
-	<code>
-		<p>
-			<img src="" id="spaceImage" data-responcy='{"small":"../public/img/space-small.jpg","medium":"../public/img/space-medium.jpg", "large":"../public/img/space-large.jpg"}'/>
-		</p>
-		<p>
-			<div id="responcyHtmlSource" data-responcy='{"small":"../public/partials/responcy-small.html","medium":"../public/partials/responcy-medium.html", "large":"../public/partials/responcy-large.html"}'></div>
-		</p>
-	</code>
-</pre>
+```html
+
+<p>
+	<img src="" id="spaceImage" data-responcy='{"small":"../public/img/space-small.jpg","medium":"../public/img/space-medium.jpg", "large":"../public/img/space-large.jpg"}'/>
+</p>
+
+<p>
+	<div id="responcyHtmlSource" data-responcy='{"small":"../public/partials/responcy-small.html","medium":"../public/partials/responcy-medium.html", "large":"../public/partials/responcy-large.html"}'></div>
+</p>
+```
 
 ### usage (Javascript)
 <pre lang="javascript">
