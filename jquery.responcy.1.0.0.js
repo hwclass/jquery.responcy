@@ -41,7 +41,7 @@
     var tagName = $(this).get(0).tagName,
     		currentSrc = new String();
     /*get all sizes*/
-    if (typeof options !== 'undefined') {
+    if (isUndefined(options)) {
       config.sizes.small = options.small;
       config.sizes.medium = options.medium;
       config.sizes.large = options.large;
@@ -75,5 +75,7 @@
     function getWindowWidth() { return $(window).width(); };
     // returns width of HTML document
     function getDocWidth() { return $(document).width(); };
+    //checks if the arg parameter is undefined or not
+    function isUndefined(arg) { return (typeof arg === 'undefined' ? true : false);  }
   }
 })(jQuery);
