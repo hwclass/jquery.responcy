@@ -1,7 +1,5 @@
 ## jquery.responcy 1.0.0
 
-Validates and deletes if input character value is a special char, digit or alphabetical by every char.
-
 It is designed to be worked with Bootstrap. Its equal plugin is interchange plugin for Foundation.
 
 ### usage (HTML)
