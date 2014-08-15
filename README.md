@@ -6,11 +6,11 @@ It is designed to be worked with Bootstrap. Its equal plugin is interchange plug
 ```html
 
 <p>
-	<img src="" id="spaceImage" data-responcy='{"small":"../public/img/space-small.jpg","medium":"../public/img/space-medium.jpg", "large":"../public/img/space-large.jpg"}'/>
+  <img src="" id="spaceImage" data-responcy='{"small":"../public/img/space-small.jpg","medium":"../public/img/space-medium.jpg", "large":"../public/img/space-large.jpg"}'/>
 </p>
 
 <p>
-	<div id="responcyHtmlSource" data-responcy='{"small":"../public/partials/responcy-small.html","medium":"../public/partials/responcy-medium.html", "large":"../public/partials/responcy-large.html"}'></div>
+  <div id="responcyHtmlSource" data-responcy='{"small":"../public/partials/responcy-small.html","medium":"../public/partials/responcy-medium.html", "large":"../public/partials/responcy-large.html"}'></div>
 </p>
 ```
 
