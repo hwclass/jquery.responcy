@@ -67,10 +67,6 @@
         }
       });
     };
-    // returns height of browser viewport
-    function getWindowHeight() { return $(window).height(); };
-    // returns height of HTML document
-    function getDocHeight() { return $(document).height(); };
     // returns width of browser viewport
     function getWindowWidth() { return $(window).width(); };
     // returns width of HTML document
