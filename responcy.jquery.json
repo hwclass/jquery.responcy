@@ -6,7 +6,7 @@
 		"responsive",
 		"ajax"
 	],
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": {
 		"name": "Barış Güler",
 		"url": "https://github.com/hwclass/jquery.responcy/AUTHORS.txt"
