@@ -18,10 +18,10 @@ It is designed to be worked with Bootstrap. Its equal plugin is interchange plug
 
 ### usage (Javascript)
 <pre lang="javascript">
-	<code>
-		$(document).ready(function () {
-			$('#spaceImage').responcy();
-			$('#responcyHtmlSource').responcy();
-		});
-	</code>
+<code>
+$(document).ready(function () {
+$('#spaceImage').responcy();
+$('#responcyHtmlSource').responcy();
+});
+</code>
 </pre>
