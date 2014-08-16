@@ -1,4 +1,4 @@
-## jquery.responcy 1.0.1
+## jquery.responcy 1.0.2
 
 It is designed to be worked with Bootstrap. Its equal plugin is interchange plugin for Foundation.
 
