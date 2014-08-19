@@ -41,7 +41,7 @@
     var tagName = $(this).get(0).tagName,
     		currentSrc = new String();
     /*get all sizes*/
-    if (isUndefined(options)) {
+    if (!isUndefined(options)) {
       config.sizes.small = options.small;
       config.sizes.medium = options.medium;
       config.sizes.large = options.large;
