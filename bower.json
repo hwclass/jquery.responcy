@@ -1,0 +1,25 @@
+{
+  "name": "jquery.responcy",
+  "version": "1.0.2",
+  "homepage": "https://github.com/hwclass/jquery.responcy",
+  "authors": [
+    "hwclass <harderworking.class@gmail.com>"
+  ],
+  "description": "A jQuery plugin for responsive source calls for a selected HTML element like for image or html",
+  "main": "jquery.responcy.1.0.2.js",
+  "keywords": [
+    "responsive",
+    "ajax",
+    "images",
+    "html",
+    "source"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
