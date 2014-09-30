@@ -27,6 +27,7 @@
     }
     /*get needed data from the element with responcy attribute*/
     var responcyObj = JSON.stringify($(this).data('responcy'));
+    console.dir(responcyObj);
     /*initialize a responcy object to control itself*/
     responcyObj = JSON.parse(responcyObj, function (key, value) {
       var type;
