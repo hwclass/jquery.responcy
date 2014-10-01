@@ -11,7 +11,7 @@
  * jQuery authoring guidelines
  *
  * Launch  : April 2014
- * Version : 1.0.3
+ * Version : 1.0.2
  * Released: April 1st, 2014
  *
  *
@@ -23,11 +23,16 @@
     /*config object with default source sizes*/
     var config = {
       tags: { img: 'IMG'},
-      sizes: { small: 1024, medium: 1600, large: 2000 }
+      default : {
+      	sizes: { 
+      		small: 1024, 
+      		medium: 1600, 
+      		large: 2000
+      	}
+      }
     }
     /*get needed data from the element with responcy attribute*/
     var responcyObj = JSON.stringify($(this).data('responcy'));
-    console.dir(responcyObj);
     /*initialize a responcy object to control itself*/
     responcyObj = JSON.parse(responcyObj, function (key, value) {
       var type;
@@ -43,28 +48,28 @@
     		currentSrc = new String();
     /*get all sizes*/
     if (!isUndefined(options)) {
-      config.sizes.small = options.small;
-      config.sizes.medium = options.medium;
-      config.sizes.large = options.large;
+      config.default.sizes.small = options.small;
+      config.default.sizes.medium = options.medium;
+      config.default.sizes.large = options.large;
     }
     /*calculate the screen resolutions*/
-    if (getWindowWidth() <= config.sizes.small && getDocWidth() <= config.sizes.small) {
+    if (getWindowWidth() <= config.default.sizes.small && getDocWidth() <= config.default.sizes.small) {
       currentSrc = responcyObj.small;
-    } else if (getWindowWidth() > config.sizes.small && getDocWidth() > config.sizes.small && getWindowWidth() <= config.sizes.medium && getDocWidth() <= config.sizes.medium) {
+    } else if (getWindowWidth() > config.default.sizes.small && getDocWidth() > config.default.sizes.small && getWindowWidth() <= config.default.sizes.medium && getDocWidth() <= config.default.sizes.medium) {
       currentSrc = responcyObj.medium;
-    } else if (getWindowWidth() > config.sizes.medium && getDocWidth() > config.sizes.medium && getWindowWidth() <= config.sizes.large && getDocWidth() <= config.sizes.large) {
+    } else if (getWindowWidth() > config.default.sizes.medium && getDocWidth() > config.default.sizes.medium && getWindowWidth() <= config.default.sizes.large && getDocWidth() <= config.default.sizes.large) {
       currentSrc = responcyObj.large;
-    } else if (getWindowWidth() >= config.sizes.large && getDocWidth() >= config.sizes.large) {
+    } else if (getWindowWidth() >= config.default.sizes.large && getDocWidth() >= config.default.sizes.large) {
       currentSrc = responcyObj.large;
     }
-    /*magic is here!*/
+    /*here comes magic!*/
     if (tagName === config.tags.img) {
       $(this).attr('src', currentSrc);
     } else {
       $($(this)).load(currentSrc, function (response, status, xhr) {
         if (status == "error") {
           var msg = "Responcy Error: " + xhr.status + " " + xhr.statusText;
-          console.log(msg);
+          log(msg);
         }
       });
     };
@@ -74,5 +79,7 @@
     function getDocWidth() { return $(document).width(); };
     //checks if the arg parameter is undefined or not
     function isUndefined(arg) { return (typeof arg === 'undefined' ? true : false);  }
+    //logs messages
+    function log(message) { console.log(message); }
   }
 })(jQuery);
