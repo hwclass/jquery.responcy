@@ -22,7 +22,7 @@
   $.fn.responcy = function (options) {
     /*config object with default source sizes*/
     var config = {
-      tags: { img: 'IMG'},
+      tags: {img: 'IMG'},
       default : {
       	sizes: { 
       		small: 1024, 
@@ -30,11 +30,52 @@
       		large: 2000
       	}
       }
+    },
+    responcyObj = null,
+    currentSrc = new String(),
+    tagName = $(this).get(0).tagName,
+    // returns width of browser viewport
+    getWindowWidth = function () {
+      return $(window).width();
+    },
+    // returns width of HTML document
+    getDocWidth = function () {
+      return $(document).width();
+    },
+    //checks if the arg parameter is undefined or not
+    isUndefined = function (arg) {
+      return (typeof arg === 'undefined' ? true : false);
+    },
+    //logs messages
+    log = function (message) {
+      console.log(message);
     }
-    /*get needed data from the element with responcy attribute*/
-    var responcyObj = JSON.stringify($(this).data('responcy'));
+
+    /*get all sizes*/
+    var setAllSizes = function (options) {
+      if (!isUndefined(options)) {
+        config.default.sizes.small = options.small;
+        config.default.sizes.medium = options.medium;
+        config.default.sizes.large = options.large;
+      }
+    };
+
+    /*calculate the screen resolutions*/
+    var setCurrentSrc = function () {
+      if (getWindowWidth() <= config.default.sizes.small && getDocWidth() <= config.default.sizes.small) {
+        currentSrc = responcyObj.small;
+      } else if (getWindowWidth() > config.default.sizes.small && getDocWidth() > config.default.sizes.small && getWindowWidth() <= config.default.sizes.medium && getDocWidth() <= config.default.sizes.medium) {
+        currentSrc = responcyObj.medium;
+      } else if (getWindowWidth() > config.default.sizes.medium && getDocWidth() > config.default.sizes.medium && getWindowWidth() <= config.default.sizes.large && getDocWidth() <= config.default.sizes.large) {
+        currentSrc = responcyObj.large;
+      } else if (getWindowWidth() >= config.default.sizes.large && getDocWidth() >= config.default.sizes.large) {
+        currentSrc = responcyObj.large;
+      }
+      return currentSrc;
+    }
+
     /*initialize a responcy object to control itself*/
-    responcyObj = JSON.parse(responcyObj, function (key, value) {
+    responcyObj = JSON.parse(JSON.stringify($(this).data('responcy')), function (key, value) {
       var type;
       if (value && typeof value === 'object') {
         type = value.type;
@@ -44,42 +85,21 @@
       }
       return value;
     });
-    var tagName = $(this).get(0).tagName,
-    		currentSrc = new String();
-    /*get all sizes*/
-    if (!isUndefined(options)) {
-      config.default.sizes.small = options.small;
-      config.default.sizes.medium = options.medium;
-      config.default.sizes.large = options.large;
-    }
-    /*calculate the screen resolutions*/
-    if (getWindowWidth() <= config.default.sizes.small && getDocWidth() <= config.default.sizes.small) {
-      currentSrc = responcyObj.small;
-    } else if (getWindowWidth() > config.default.sizes.small && getDocWidth() > config.default.sizes.small && getWindowWidth() <= config.default.sizes.medium && getDocWidth() <= config.default.sizes.medium) {
-      currentSrc = responcyObj.medium;
-    } else if (getWindowWidth() > config.default.sizes.medium && getDocWidth() > config.default.sizes.medium && getWindowWidth() <= config.default.sizes.large && getDocWidth() <= config.default.sizes.large) {
-      currentSrc = responcyObj.large;
-    } else if (getWindowWidth() >= config.default.sizes.large && getDocWidth() >= config.default.sizes.large) {
-      currentSrc = responcyObj.large;
-    }
+
+    setAllSizes(options);
+
     /*here comes magic!*/
     if (tagName === config.tags.img) {
-      $(this).attr('src', currentSrc);
+      $(this).attr('src', setCurrentSrc());
     } else {
-      $($(this)).load(currentSrc, function (response, status, xhr) {
+      $($(this)).load(setCurrentSrc(), function (response, status, xhr) {
         if (status == "error") {
           var msg = "Responcy Error: " + xhr.status + " " + xhr.statusText;
           log(msg);
         }
       });
     };
-    // returns width of browser viewport
-    function getWindowWidth() { return $(window).width(); };
-    // returns width of HTML document
-    function getDocWidth() { return $(document).width(); };
-    //checks if the arg parameter is undefined or not
-    function isUndefined(arg) { return (typeof arg === 'undefined' ? true : false);  }
-    //logs messages
-    function log(message) { console.log(message); }
+
   }
+
 })(jQuery);
