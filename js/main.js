@@ -1,9 +1,9 @@
 $(document).ready(function () {
-	
-	$('#spaceImage').responcy();
+
+	$('#spaceImage, #spaceImage2').responcy();
 
 	$(window).resize(function() {
-		$('#spaceImage').responcy({
+		$('#spaceImage, #spaceImage2').responcy({
 			small : 600,
 			medium : 1100,
 			large : 1920

@@ -6,7 +6,7 @@
     "hwclass <harderworking.class@gmail.com>"
   ],
   "description": "A jQuery plugin for responsive source calls for a selected HTML element like for image or html",
-  "main": "jquery.responcy.1.0.2.js",
+  "main": "dist/jquery.responcy.1.0.2.js",
   "keywords": [
     "responsive",
     "ajax",
